@@ -20,9 +20,19 @@ public class Second_Largest {
         } else {
 
             int[] arr = new int[n];
+            Set<Integer> repate = new HashSet<>();
 
             for (int i = 0; i < arr.length; i++) {
-                arr[i] = (int) (Math.random() * 1000);
+                int num = (int) (Math.random() * 1000);
+                // int num = 50;
+
+                if (repate.contains(num)) {
+                    System.out.println("number is repate");
+                    break;
+                } else {
+                    arr[i] = num;
+                    repate.add(num);
+                }
             }
 
             System.out.print("number is : ");
@@ -50,6 +60,7 @@ public class Second_Largest {
 
             System.out.println("\nmax : " + max_a + "\tmax 2 : " + max_b);
             System.out.println("min : " + min_a + "\tmin 2 : " + min_b);
+
         }
     }
 }
