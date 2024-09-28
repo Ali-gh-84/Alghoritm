@@ -15,36 +15,41 @@ public class Second_Largest {
         System.out.print("enter size of number :");
         int n = scanner.nextInt();
 
-        int[] arr = new int[n];
+        if (n == 0) {
+            System.out.println("size is invalid !");
+        } else {
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int)(Math.random() * 1000);
-        }
+            int[] arr = new int[n];
 
-        System.out.print("number is : ");
-        for (int s : arr) {
-            System.out.print(s + "  ");
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max_a) {
-                max_b = max_a;
-                max_a = arr[i];
-            } else if (arr[i] > max_b && arr[i] != max_a) {
-                max_b = arr[i];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = (int) (Math.random() * 1000);
             }
-        }
-        
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < min_a) {
-                min_b = min_a;
-                min_a = arr[i];
-            } else if (arr[i] < min_b && arr[i] != min_a) {
-                min_b = arr[i];
-            }
-        }
 
-        System.out.println("\nmax : " + max_a + "\tmax 2 : " + max_b);
-        System.out.println("min : " + min_a + "\tmin 2 : " + min_b);
+            System.out.print("number is : ");
+            for (int s : arr) {
+                System.out.print(s + "  ");
+            }
+
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] > max_a) {
+                    max_b = max_a;
+                    max_a = arr[i];
+                } else if (arr[i] > max_b && arr[i] != max_a) {
+                    max_b = arr[i];
+                }
+            }
+
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] < min_a) {
+                    min_b = min_a;
+                    min_a = arr[i];
+                } else if (arr[i] < min_b && arr[i] != min_a) {
+                    min_b = arr[i];
+                }
+            }
+
+            System.out.println("\nmax : " + max_a + "\tmax 2 : " + max_b);
+            System.out.println("min : " + min_a + "\tmin 2 : " + min_b);
+        }
     }
 }
