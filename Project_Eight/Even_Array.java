@@ -50,13 +50,24 @@ public class Even_Array {
                     odd2 += 1;
                 }
             }
-            if (even == even2 && odd == odd2) {
-                System.out.println("array is even");
-            } else {
-                System.out.println("Array is not changed !");
-            }
-
-        } else if (n % 2 == 0 && n > 0) {
+            if (even == even2 && odd == odd2) {  
+                for (int i = 0; i < arr.length; i++) {
+                    // System.out.println(arr[i]);
+                    if (i % 2 != arr[i] % 2) { 
+                        count += 1;  
+                    } 
+                }if (count == 0) {
+                    System.out.println("array is even");
+                }else{
+                    System.out.println("change count is :" + (count-1));
+                }
+            } else {  
+                System.out.println("Array is not changed !");  
+            }  
+        
+        }  
+    
+        else if (n % 2 == 0 && n > 0) {
 
             for (int i = 0; i < arr.length; i++) {
                 System.out.print("enter a number : ");
