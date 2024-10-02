@@ -6,7 +6,7 @@ public class Tic_Toc_Toe {
 
     Scanner scanner = new Scanner(System.in);
 
-    char[] number_home = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    char[] number_home = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }; // int [] number_home = {1,2,3,4,5,6,7,8,9}
     int turn = 0;
 
     public void show_playground() {
@@ -35,8 +35,8 @@ public class Tic_Toc_Toe {
     public void get_input() {
 
         System.out.print("enter a number between 1-9 : ");
-        char input = scanner.next().charAt(0);
-        int index = input - '1';
+        char input = scanner.next().charAt(0);  // int input = scanner.nextInt();
+        int index = input - '1';   // int index = input - 1;
         if (index >= 0 && index < 9 && number_home[index] != 'X' && number_home[index] != 'O') {
             number_home[index] = turn_player();
             turn++;
