@@ -17,7 +17,7 @@ public class Manage_University {
 
         System.out.println();
 
-        System.out.print("* WELCOME TO THE MANAGE UNIVERSITY APP *");
+        System.out.print("\t* WELCOME TO THE MANAGE UNIVERSITY APP *");
 
         System.out.println();
 

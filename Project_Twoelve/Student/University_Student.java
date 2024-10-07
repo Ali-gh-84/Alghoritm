@@ -9,7 +9,7 @@ public class University_Student {
     ArrayList<String> full_name_student = new ArrayList<>();
     HashMap<String, Integer> name_id_student = new HashMap<>();
     ArrayList<String> unit = new ArrayList<>();
-    HashMap<String, String> set_unit = new HashMap<>();
+    HashMap<String, ArrayList<String>> set_unit = new HashMap<>();
 
     int count1 = 1;
     int count2 = 1;
@@ -69,7 +69,10 @@ public class University_Student {
             return;
         }
 
-        while (set_unit.values().size() < 2) {
+        ArrayList<String> les = new ArrayList<>();
+        String object = "";
+
+        while (les.size() < 2) {
 
             System.out.print("\tEnter Number Lesson : { 1) Mathes , 2) Persian , 3) English } :");
             int get_unit = scanner.nextInt();
@@ -77,39 +80,29 @@ public class University_Student {
 
             switch (get_unit) {
                 case 1:
-                    if (!set_unit.containsValue("Mathes")) {
-                        set_unit.put(find_name, "Mathes");
-                        System.out.println("\tYou Choose Mathes and 7 unit");
-                        return;
-                    } else {
-                        System.out.println("\tYou Cannot choose them !");
-                    }
+                    object = "Mathes";
                     break;
                 case 2:
-                    if (!set_unit.containsValue("Persian")) {
-                        set_unit.put(find_name, "Persian");
-                        System.out.println("\tYou Choose Persian and 7 unit");
-                        return;
-                    } else {
-                        System.out.println("\tYou Cannot choose them !");
-                    }
+                    object = "Persian";
                     break;
                 case 3:
-                    if (!set_unit.containsValue("English")) {
-                        set_unit.put(find_name, "English");
-                        System.out.println("\tYou Choose English and 7 unit");
-                        return;
-                    } else {
-                        System.out.println("\tYou Cannot choose them !");
-                    }
-
+                    object = "English";
                     break;
-                default:
-                    System.out.println("\tEnter True Number!");
+                default :
+                    System.out.println("\tPlease Enter valid Number !");
                     continue;
             }
-            if (set_unit.size() >= 2) {
-                System.out.println("\tYour Unit is Full!");
+            if (!les.contains(object)){
+                les.add(object);
+                System.out.println("\tYou Choose " + object + " and 7 unit");
+                set_unit.put(find_name , les);
+                break;
+                
+            }else {
+                System.out.println("\tYou Cannot choose them !");
+            }
+            if (les.size() >= 2){
+                System.out.println("\tYour unit is Full !");
                 break;
             }
         }
@@ -119,10 +112,15 @@ public class University_Student {
 
         System.out.println("\tList Student and Unit as follows :");
 
-        for (Map.Entry<String, String> show_all_students_unit : set_unit.entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> show_all_students_unit : set_unit.entrySet()) {
             System.out
-                    .println("\t" + count2 + ") " + show_all_students_unit.getKey() + " Unit : "
-                            + show_all_students_unit.getValue() + " .");
+                    .print("\t" + count2 + ") " + show_all_students_unit.getKey() + " Unit : ");
+                    for (var lessons : show_all_students_unit.getValue()) {
+                        System.out.print(
+                            lessons + " ."
+                        );
+                    }
+                    System.out.println();
             count2 += 1;
         }
     }
