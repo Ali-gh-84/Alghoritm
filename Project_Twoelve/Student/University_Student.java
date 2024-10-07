@@ -96,7 +96,6 @@ public class University_Student {
                 les.add(object);
                 System.out.println("\tYou Choose " + object + " and 7 unit");
                 set_unit.put(find_name , les);
-                break;
                 
             }else {
                 System.out.println("\tYou Cannot choose them !");
