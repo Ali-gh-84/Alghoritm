@@ -8,8 +8,19 @@ public class University_Student {
 
     ArrayList<String> full_name_student = new ArrayList<>();
     HashMap<String, Integer> name_id_student = new HashMap<>();
-    ArrayList<String> unit = new ArrayList<>();
     HashMap<String, ArrayList<String>> set_unit = new HashMap<>();
+    ArrayList<String> unit = new ArrayList<>(){{
+        add("Mathes");
+        add("Persian");
+        add("English");
+        add("PE");
+        add("IT");
+        add("Phisic");
+        add("Chemist");
+        add("History");
+        add("Holy Qoran");
+        add("Arabic");
+    }};
 
     int count1 = 1;
     int count2 = 1;
@@ -39,73 +50,91 @@ public class University_Student {
         }
     }
 
+
     public void show_terms() {
+
         System.out.println("\tName Lessons and Unit : ");
-        unit.add("Mathes");
-        unit.add("Persian");
-        unit.add("English");
-        for (int i = 0; i < unit.size(); i++) {
-            System.out.println("\t" + (i + 1) + ") " + unit.get(i) + " : " + "this lesson 7 unit.");
+            for(String all : unit){
+                System.out.println("\t -> " + all + " : " + "this lesson 5 unit.");
         }
     }
 
+
     public void get_terms() {
+
+        show_terms();
+        System.out.println();
 
         String find_name = null;
         boolean again = false;
 
-        System.out.print("\tEnter Name Of Student For Search : ");
-        String search_name = scanner.nextLine();
+        System.out.print("\tPlease Choose any Way For Search Student  ->  1) With Name  2) With ID : ");
+        int choose_way = scanner.nextInt();
+        scanner.nextLine();
 
-        for (Map.Entry<String, Integer> loop_name : name_id_student.entrySet()) {
-            if (loop_name.getKey().equals(search_name)) {
-                find_name = search_name;
-                again = true;
-                break;
+        if (choose_way == 1){
+
+            System.out.print("\tEnter Name Of Student For Search : ");
+            String search_name = scanner.nextLine();
+
+            for (Map.Entry<String, Integer> loop_name : name_id_student.entrySet()) {
+                if (loop_name.getKey().equals(search_name)) {
+                    find_name = search_name;
+                    again = true;
+                    break;
+                }
             }
-        }
-        if (!again) {
-            System.out.println("\tStudnet Not Found!");
+            if (!again) {
+                System.out.println("\tStudnet Not Found!");
+                return;
+            }
+
+        }else if (choose_way == 2){
+            System.out.print("\tEnter ID Of Student For Search : ");
+            int search_id = scanner.nextInt();
+            scanner.nextLine();
+
+            for (Map.Entry<String , Integer> loop_id : name_id_student.entrySet()){
+                if (loop_id.getValue().equals(search_id)){
+                    find_name = loop_id.getKey();
+                    again = true;
+                    break;
+                }
+            }
+            if(!again){
+                System.out.println("\tStudent Not Found!");
+                return;
+            }
+        }else {
+            System.out.println("\tPlease Enter True Option !");
             return;
         }
 
-        ArrayList<String> les = new ArrayList<>();
-        String object = "";
+        ArrayList<String> lessons = set_unit.getOrDefault(find_name, new ArrayList<>());
 
-        while (les.size() < 2) {
+        while(lessons.size() < 4){
+            System.out.print("\tPlease Enter Name Of Lessons For Choose Unit : ");
+            String choose_lesson = scanner.nextLine();
 
-            System.out.print("\tEnter Number Lesson : { 1) Mathes , 2) Persian , 3) English } :");
-            int get_unit = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (get_unit) {
-                case 1:
-                    object = "Mathes";
-                    break;
-                case 2:
-                    object = "Persian";
-                    break;
-                case 3:
-                    object = "English";
-                    break;
-                default :
-                    System.out.println("\tPlease Enter valid Number !");
-                    continue;
-            }
-            if (!les.contains(object)){
-                les.add(object);
-                System.out.println("\tYou Choose " + object + " and 7 unit");
-                set_unit.put(find_name , les);
-                
+            if (unit.contains(choose_lesson)){
+                if (!lessons.contains(choose_lesson)){
+                    lessons.add(choose_lesson);
+                    set_unit.put(find_name , lessons);
+                    System.out.println("\tYou Choose " + choose_lesson + " lesson.");
+                    return;
+                }else{
+                    System.out.println("\tYou Can Not Choose Them!");
+                }
             }else {
-                System.out.println("\tYou Cannot choose them !");
+                System.out.println("\tThis Lesson Isnot True!");
             }
-            if (les.size() >= 2){
-                System.out.println("\tYour unit is Full !");
-                break;
+            if (lessons.size() == 4){
+                System.out.println("\tYour Choose is Full!");
+                return;
             }
         }
     }
+
 
     public void show_stuednt_unit() {
 
@@ -114,9 +143,9 @@ public class University_Student {
         for (Map.Entry<String, ArrayList<String>> show_all_students_unit : set_unit.entrySet()) {
             System.out
                     .print("\t" + count2 + ") " + show_all_students_unit.getKey() + " Unit : ");
-                    for (var lessons : show_all_students_unit.getValue()) {
+                    for (var all_lessons : show_all_students_unit.getValue()) {
                         System.out.print(
-                            lessons + " ."
+                            all_lessons + " . "
                         );
                     }
                     System.out.println();
@@ -124,3 +153,4 @@ public class University_Student {
         }
     }
 }
+
