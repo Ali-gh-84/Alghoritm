@@ -6,7 +6,7 @@ public class University_Class {
 
     Scanner scanner = new Scanner(System.in);
 
-    private ArrayList<String> classess_name = new ArrayList<>(){{add("sanatiqom");}}; // {{add("sanatiqom");}}
+    private ArrayList<String> classess_name = new ArrayList<>(); 
     private HashMap<String, String> place_classes = new HashMap<>();
     private HashMap<String, String> day_classes = new HashMap<>();
     private HashMap<String, Integer> time_classes = new HashMap<>();

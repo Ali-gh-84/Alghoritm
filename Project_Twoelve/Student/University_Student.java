@@ -3,9 +3,14 @@ package Project_Twoelve.Student;
 import java.util.*;
 import Project_Twoelve.Classess.University_Class;
 
+
 public class University_Student {
 
-    University_Class clas = new University_Class();
+    private University_Class clas2 ;
+    
+    public University_Student(University_Class clas2) {
+        this.clas2 = clas2; 
+    }
 
     Scanner scanner = new Scanner(System.in);
 
@@ -33,7 +38,7 @@ public class University_Student {
         return name_id_student;
     }
 
-    public HashMap<String, Integer> get_set_unit (){
+    public HashMap<String, ArrayList<String>> get_set_unit (){
         return set_unit;
     }
 
@@ -43,17 +48,18 @@ public class University_Student {
 
     public void get_name_student() {
 
-        if (!clas.get_classess_name().isEmpty()) {
 
-            clas.show_name_class();
+        if (!clas2.get_classess_name().isEmpty()) {
+
+            clas2.show_name_class();
             System.out.println();
 
             System.out.print("\tPlease Choose Your Name Of University : ");
             String choose_university = scanner.nextLine();
 
-            if(clas.get_classess_name().contains(choose_university)){
+            if(clas2.get_classess_name().contains(choose_university)){
 
-                ArrayList<String> students = clas.get_student_university().getOrDefault(choose_university, new ArrayList<>()); 
+                ArrayList<String> students = clas2.get_student_university().getOrDefault(choose_university, new ArrayList<>()); 
 
                 System.out.print("\t Please Enter Full Name : ");
                 String name_student = scanner.nextLine();
@@ -70,7 +76,7 @@ public class University_Student {
                 name_id_student.put(name_student, id_student);
                 full_name_student.add(name_student);
                 students.add(name_student);
-                clas.get_student_university().put(choose_university, students);
+                clas2.get_student_university().put(choose_university, students);
 
                 System.out.println("\tStudent added successfully");
 

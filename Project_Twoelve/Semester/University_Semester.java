@@ -1,22 +1,26 @@
 package Project_Twoelve.Semester;
 
 import java.util.*;
-import Project_Twoelve.Classess.University_Class;
 import Project_Twoelve.Student.University_Student;
+
 
 public class University_Semester {
 
-    public void average_students (){
+    private University_Student clas ;
+    
+    public University_Semester(University_Student clas) {
+        this.clas = clas; 
+    }
 
-        Scanner scanner = new Scanner(System.in);
-        HashMap<String, Integer> average_student = new HashMap<>();  
-        ArrayList<Integer> score = new ArrayList<>();
-        University_Student student_term = new University_Student();
+    Scanner scanner = new Scanner(System.in);
+    HashMap<String, Integer> average_student = new HashMap<>();  
+    ArrayList<Integer> score = new ArrayList<>();
+    int count = 1;
+
+    public void average_students (){
 
         boolean again = false;
         String find_name = null;
-
-        int count = 1;
 
         System.out.print("\tPlese Choose any Way For Search Student -> 1) by Name 2) by ID : ");
         int choose_way = scanner.nextInt();
@@ -27,7 +31,7 @@ public class University_Semester {
             System.out.print("\tPlese Enter Your Name For Search : ");
             String search_name = scanner.nextLine();
 
-            for (Map.Entry<String, Integer> loop_name : student_term.get_name_id_student().entrySet()) {
+            for (Map.Entry<String, Integer> loop_name : clas.get_name_id_student().entrySet()) {
                 if (loop_name.getKey().equals(search_name)) {
                     find_name = search_name;
                     again = true;
@@ -45,7 +49,7 @@ public class University_Semester {
                 int search_id = scanner.nextInt();
                 scanner.nextLine();
 
-                for (Map.Entry<String , Integer> loop_id : student_term.get_name_id_student().entrySet()){
+                for (Map.Entry<String , Integer> loop_id : clas.get_name_id_student().entrySet()){
                     if (loop_id.getValue().equals(search_id)){
                         find_name = loop_id.getKey();
                         again = true;
@@ -60,11 +64,11 @@ public class University_Semester {
             System.out.println("\tNumber isnot True!");
         }
 
-        student_term.show_stuednt_unit();
+        clas.show_stuednt_unit();
         System.out.println();
 
-        for (int i = 0; i < student_term.get_set_unit().size(); i++) {
-            System.out.println("\tEnter Score of Lesson " + (i+1) + " : ");
+        for (int i = 0; i <= clas.get_set_unit().size(); i++) {
+            System.out.print("\tEnter Score of Lesson : ");
             score.add(scanner.nextInt());
         }
 
@@ -72,7 +76,8 @@ public class University_Semester {
         for(double s : score){
             sum += s;
         }
-        double average = sum / student_term.get_set_unit().size();
+
+        double average = sum / clas.get_set_unit().size();
 
         average_student.put(find_name , (int)average);
 

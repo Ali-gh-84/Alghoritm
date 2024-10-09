@@ -5,15 +5,16 @@ import Project_Twoelve.Classess.University_Class;
 import Project_Twoelve.Semester.University_Semester;
 import Project_Twoelve.Student.University_Student;
 
+
 public class Manage_University {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        University_Class clas2 = new University_Class();
+        University_Student clas = new University_Student(clas2);
+        University_Semester term = new University_Semester(clas);
 
-        University_Class classes = new University_Class();
-        University_Semester term = new University_Semester();
-        University_Student student = new University_Student();
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println();
 
@@ -49,34 +50,34 @@ public class Manage_University {
 
             switch (option) {
                 case 1:
-                    classes.get_name_class();
+                    clas2.get_name_class();
                     break;
                 case 2:
-                    classes.show_name_class();
+                    clas2.show_name_class();
                     break;
                 case 3:
-                    student.get_name_student();
+                    clas.get_name_student();
                     break;
                 case 4:
-                    student.show_name_student();
+                    clas.show_name_student();
                     break;
                 case 5:
-                    classes.show_place_class();
+                    clas2.show_place_class();
                     break;
                 case 6:
-                    classes.show_day_class();
+                    clas2.show_day_class();
                     break;
                 case 7:
-                    classes.show_time_class();
+                    clas2.show_time_class();
                     break;
                 case 8:
-                    student.show_terms();
+                    clas.show_terms();
                     break;
                 case 9:
-                    student.get_terms();
+                    clas.get_terms();
                     break;
                 case 10:
-                    student.show_stuednt_unit();
+                    clas.show_stuednt_unit();
                     break;
                 case 11:
                     term.average_students();
