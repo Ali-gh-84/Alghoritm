@@ -1,15 +1,18 @@
 package Project_Twoelve.Student;
 
 import java.util.*;
+import Project_Twoelve.Classess.University_Class;
 
 public class University_Student {
 
+    University_Class clas = new University_Class();
+
     Scanner scanner = new Scanner(System.in);
 
-    ArrayList<String> full_name_student = new ArrayList<>();
-    HashMap<String, Integer> name_id_student = new HashMap<>();
-    HashMap<String, ArrayList<String>> set_unit = new HashMap<>();
-    ArrayList<String> unit = new ArrayList<>(){{
+    private ArrayList<String> full_name_student = new ArrayList<>();
+    private HashMap<String, Integer> name_id_student = new HashMap<>();
+    private HashMap<String, ArrayList<String>> set_unit = new HashMap<>();
+    private ArrayList<String> unit = new ArrayList<>(){{
         add("Mathes");
         add("Persian");
         add("English");
@@ -22,21 +25,63 @@ public class University_Student {
         add("Arabic");
     }};
 
+    public ArrayList<String> get_full_name_student (){
+        return full_name_student;
+    }
+
+    public HashMap<String, Integer> get_name_id_student (){
+        return name_id_student;
+    }
+
+    public HashMap<String, Integer> get_set_unit (){
+        return set_unit;
+    }
+
     int count1 = 1;
     int count2 = 1;
 
+
     public void get_name_student() {
 
-        System.out.print("\t Please Enter Full Name : ");
-        String name_student = scanner.nextLine();
+        if (!clas.get_classess_name().isEmpty()) {
 
-        int id_student = (int) (Math.random() * 101);
-        System.out.println("\tYour Uniqe Student Number is : " + id_student);
+            clas.show_name_class();
+            System.out.println();
 
-        name_id_student.put(name_student, id_student);
-        full_name_student.add(name_student);
+            System.out.print("\tPlease Choose Your Name Of University : ");
+            String choose_university = scanner.nextLine();
 
-        System.out.println("\tStudent added successfully");
+            if(clas.get_classess_name().contains(choose_university)){
+
+                ArrayList<String> students = clas.get_student_university().getOrDefault(choose_university, new ArrayList<>()); 
+
+                System.out.print("\t Please Enter Full Name : ");
+                String name_student = scanner.nextLine();
+
+                if (full_name_student.contains(name_student)){
+                    System.out.println("\t This Name is Repate !");
+                    return;
+                }
+
+                int id_student = (int) (Math.random() * 101);
+                System.out.println("\tYour Uniqe Student Number is : " + id_student);
+
+
+                name_id_student.put(name_student, id_student);
+                full_name_student.add(name_student);
+                students.add(name_student);
+                clas.get_student_university().put(choose_university, students);
+
+                System.out.println("\tStudent added successfully");
+
+            }else {
+                System.out.println("\tThis university NOt Found!");
+                return;
+            }
+        }else {
+            System.out.println("\tPlease First Enter a University!");
+            return;
+        }
     }
 
     public void show_name_student() {

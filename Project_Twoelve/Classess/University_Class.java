@@ -6,10 +6,19 @@ public class University_Class {
 
     Scanner scanner = new Scanner(System.in);
 
-    ArrayList<String> classess_name = new ArrayList<>();
-    HashMap<String, String> place_classes = new HashMap<>();
-    HashMap<String, String> day_classes = new HashMap<>();
-    HashMap<String, Integer> time_classes = new HashMap<>();
+    private ArrayList<String> classess_name = new ArrayList<>(){{add("sanatiqom");}}; // {{add("sanatiqom");}}
+    private HashMap<String, String> place_classes = new HashMap<>();
+    private HashMap<String, String> day_classes = new HashMap<>();
+    private HashMap<String, Integer> time_classes = new HashMap<>();
+    private HashMap<String, ArrayList<String>> student_university = new HashMap<>();
+
+    public ArrayList<String> get_classess_name(){
+        return classess_name;
+    }
+
+    public HashMap<String, ArrayList<String>> get_student_university(){
+        return student_university;
+    }
 
     int count1 = 1;
     int count2 = 1;
@@ -34,7 +43,8 @@ public class University_Class {
         System.out.println();
         System.out.println("\tClass added successfully");
 
-        classess_name.add(name_class);
+        // classess_name.add(name_class);
+        get_classess_name().add(name_class);
         place_classes.put(name_class, place_class);
         day_classes.put(name_class, day_class);
         time_classes.put(name_class, time_class);

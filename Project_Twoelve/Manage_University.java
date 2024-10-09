@@ -36,11 +36,13 @@ public class Manage_University {
             System.out.println("\t 8) Show List Terms");
             System.out.println("\t 9) Choose Unit of Terms");
             System.out.println("\t 10) Show List Student and Unit");
-            System.out.println("\t 11) Exit");
+            System.out.println("\t 11) Display and Calculate the Total Grade");
+            System.out.println("\t 12) Show List Sudent and Average");
+            System.out.println("\t 13) Exit");
 
             System.out.println();
 
-            System.out.print("\tEnter an option between 1-11 : ");
+            System.out.print("\tEnter an option between 1-13 : ");
             int option = scanner.nextInt();
 
             System.out.println();
@@ -77,6 +79,12 @@ public class Manage_University {
                     student.show_stuednt_unit();
                     break;
                 case 11:
+                    term.average_students();
+                    break;
+                case 12:
+                    term.show_student_average();
+                    break;
+                case 13:
                     System.out.println("\tThanks For Use Our App !");
                     again = false;
                     break;
